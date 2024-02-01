@@ -29,8 +29,8 @@ class AlienInvasion:
         """Обработка нажатия клавиш и событий мыши."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                    sys.exit()
-    
+                sys.exit()
+
     def _update_screen(self):
         """Обновление изображения на экране и отображение нового экрана."""
         self.screen.fill(self.settings.bg_color)
