@@ -109,6 +109,8 @@ class AlienInvasion:
         """Обновление позиций пришельцев во флоте."""
         self._check_fleet_edges()
         self.aliens.update()
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print('Ship hit!!!')
 
     def _update_bullets(self):
         """Обновление позиции снарядов и уничтожение старых."""
