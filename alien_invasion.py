@@ -37,6 +37,14 @@ class AlienInvasion:
             self._update_aliens()
             self._update_screen()
 
+    def _check_aliens_bottom(self):
+        """Проверка достижения пришельцами нижней части экрана."""
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                self._ship_hit()
+                break
+
     def _check_events(self):
         """Обработка нажатия клавиш и событий мыши."""
         for event in pygame.event.get():
@@ -123,6 +131,7 @@ class AlienInvasion:
         self.aliens.update()
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
+        self._check_aliens_bottom()
 
     def _update_bullets(self):
         """Обновление позиции снарядов и уничтожение старых."""
