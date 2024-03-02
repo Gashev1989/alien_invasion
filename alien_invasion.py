@@ -95,8 +95,14 @@ class AlienInvasion:
 
     def _check_play_button(self, mouse_pos):
         """Запуск игры при нажатии кнопки 'Play'."""
-        if self.play_button.rect.collidepoint(mouse_pos):
+        button_cliked = self.play_button.rect.collidepoint(mouse_pos)
+        if button_cliked and not self.stats.game_active:
+            self.stats.reset_stats()
             self.stats.game_active = True
+            self.aliens.empty()
+            self.bullets.empty()
+            self._create_fleet()
+            self.ship.center_ship()
 
     def _create_fleet(self):
         """Создание флота инопланетян."""
