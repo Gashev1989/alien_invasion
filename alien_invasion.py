@@ -103,6 +103,7 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.ship.center_ship()
+            pygame.mouse.set_visible(False)
 
     def _create_fleet(self):
         """Создание флота инопланетян."""
@@ -145,6 +146,7 @@ class AlienInvasion:
             sleep(0.5)
         else:
             self.stats.game_active = False
+            pygame.mouse.set_visible(True)
 
     def _update_aliens(self):
         """Обновление позиций пришельцев во флоте."""
